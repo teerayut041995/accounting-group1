@@ -2,15 +2,13 @@
   include "../config/database.php";
   if (isset($_GET['action']) && $_GET['action'] == "insert")
   {
-    $date = $_POST['date'];
-    $detail = $_POST['detail'];
-    $acc_id = $_POST['acc_id'];
-    $cost = $_POST['cost'];
-    $status = $_POST['status'];
-    $sql = "INSERT INTO `tb_book` (`date`, `detail`, `acc_id`, `cost`, `status`)
-      VALUES ('$date', '$detail', '$acc_id', '$cost', '$status')";
+    echo $list = $_POST["list"];
+    echo $acc_num = $_POST["acc_num"];
+    $sql = "INSERT INTO `tb_account_number` (`acc_id`, `acc_number`, `list`)
+    VALUES (NULL, '$acc_num', '$list')";
     $result = mysqli_query($conn , $sql);
-    header("refresh:0; ../index.php");
+    header("refresh:1; url=../accountNumber.php");
+    //header("Location:../accountNumber.php");
   }
 
   if (isset($_GET['action']) && $_GET['action'] == "update")
